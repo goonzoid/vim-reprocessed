@@ -25,7 +25,7 @@ documentation.
 
 By default, reprocessed will try to look up documentation online. However, you
 can configure it to access local documentation by adding the following line to
-your `.vimrc`:
+your .vimrc:
 
     let processing_doc_path="/path/to/processing/docs/on/your/machine"
 
@@ -36,17 +36,17 @@ to make a copy of that documentation elsewhere on the filesystem.
 
 ### Running sketches from within vim
 
-__WARNING:__ If you have a directory inside your sketch directory called `bin`
+__WARNING:__ If you have a directory inside your sketch directory called "bin"
 then it will be destroyed when you run your sketch using this method. This is
 because `processing-java` requires an output directory to be specified, which
-reprocessed specifies as `bin` in the same directory of your sketch.
+reprocessed specifies as "bin" in the same directory of your sketch.
 `processing-java` will stomp on this directory without warning because we're
 using the `--force` option, which is required to prevent you having to delete
 the directory manually after each run. I plan to make this path configurable
 at some point in the future, but until then, __you have been warned!__
 
-This feature requires the `processing-java` command to be available in your
-PATH. On Linux & Windows you'll need to add it manually, but on OS X you should
+This feature requires the `processing-java` command to be available on your
+`PATH`. On Linux & Windows you'll need to add it manually, but on OS X you should
 be able to install this from within the Pocessing app. See the [processing wiki]
 (http://wiki.processing.org/w/Command_Line) for more information.
 
