@@ -16,7 +16,7 @@ if has("python")
     let g:processing_doc_style = "web"
   endif
   if !exists("g:processing_doc_path")
-    let g:processing_doc_style = "web"
+    let g:processing_doc_path = "web"
   endif
 
 function! ProcessingDoc()
