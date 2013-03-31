@@ -8,6 +8,7 @@ setlocal cindent
 setlocal cinkeys-=0#
 setlocal formatoptions-=t formatoptions+=croql
 setlocal suffixesadd=.pde
+setlocal commentstring=//\ %s
 
 let b:undo_ftplugin = "set cin< cink< fo< sua< et< sw< ts<"
 
