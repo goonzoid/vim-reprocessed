@@ -1,10 +1,12 @@
 # reprocessed.vim
 
-A plugin to make it easy to work with the Processing language.
+A plugin to make it easier to work with the Processing language in vim.
 It is originally based on
 [sophacles/vim-processing](https://github.com/sophacles/vim-processing),
 which was in turn an extension of vim script
 [#2115](http://www.vim.org/scripts/script.php?script_id=2115).
+
+Please note that this plugin has currently only been tested on OS X.
 
 ## Features
 
