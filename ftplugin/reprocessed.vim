@@ -15,11 +15,10 @@ nmap <buffer> <leader>r :w\|:!processing-java --sketch=%:p:h --output=%:p:h/bin 
 let b:undo_ftplugin = "set cin< cink< fo< sua< et< sw< ts<"
 
 if has("python")
-  if !exists("g:processing_doc_style")
-    let g:processing_doc_style = "web"
-  endif
   if !exists("g:processing_doc_path")
-    let g:processing_doc_path = "web"
+    let g:processing_doc_style = "web"
+  else
+    let g:processing_doc_style = "local"
   endif
 
   function! ProcessingDoc()
@@ -32,7 +31,7 @@ from os import path
 def launchDocFile(filename):
   docfile = path.join(basepath, filename)
   if path.exists(docfile) and path.isfile(docfile):
-    webbrowser.open(docfile)
+    webbrowser.open("file://" + docfile)
     return True
   return False
 
