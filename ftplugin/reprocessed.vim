@@ -19,76 +19,74 @@ if has("python")
     let g:processing_doc_path = "web"
   endif
 
-function! ProcessingDoc()
+  function! ProcessingDoc()
+python << ENDPY
+import vim
+import re
+import webbrowser
+from os import path
 
-  python << ENDPY
-  import vim
-  import re
-  import webbrowser
-  from os import path
-
-  def launchDocFile(filename):
-    docfile = path.join(basepath, filename)
-    if path.exists(docfile) and path.isfile(docfile):
-      webbrowser.open(docfile)
-      return True
-    return False
-
-  def launchDocWeb(filename):
-    docfile = "http://processing.org/reference/"
-    webbrowser.open(docfile+filename)
+def launchDocFile(filename):
+  docfile = path.join(basepath, filename)
+  if path.exists(docfile) and path.isfile(docfile):
+    webbrowser.open(docfile)
     return True
+  return False
 
-  def wordStart(line, column):
-    start = column
-    for i in reversed(range(column)):
-      if line[i].isalnum():
-        start = i
-      else:
-        break
-    return start
+def launchDocWeb(filename):
+  docfile = "http://processing.org/reference/"
+  webbrowser.open(docfile+filename)
+  return True
 
-  if vim.eval("g:processing_doc_style") == "local":
-    basepath = path.abspath(vim.eval("g:processing_doc_path"))
-    launchDoc = launchDocFile
+def wordStart(line, column):
+  start = column
+  for i in reversed(range(column)):
+    if line[i].isalnum():
+      start = i
+    else:
+      break
+  return start
+
+if vim.eval("g:processing_doc_style") == "local":
+  basepath = path.abspath(vim.eval("g:processing_doc_path"))
+  launchDoc = launchDocFile
+else:
+  launchDoc = launchDocWeb
+
+(row, col) = vim.current.window.cursor
+line = vim.current.line
+
+col = wordStart(line, col)
+if re.match(r"\w+\s*\(", line[col:]):
+  if col < 4:
+    fun = True
   else:
-    launchDoc = launchDocWeb
-
-  (row, col) = vim.current.window.cursor
-  line = vim.current.line
-
-  col = wordStart(line, col)
-  if re.match(r"\w+\s*\(", line[col:]):
-    if col < 4:
+    col -= 4
+    if re.match(r"new\s*\w+\s*\(", line[col:]):
+      fun = False
+    else:
       fun = True
-    else:
-      col -= 4
-        if re.match(r"new\s*\w+\s*\(", line[col:]):
-          fun = False
-        else:
-          fun = True
+else:
+  fun = False
+
+word = vim.eval('expand("<cword>")')
+
+if word:
+  if fun:
+    success = launchDoc(word + "_.html") or launchDoc(word + ".html")
   else:
-    fun = False
+    success = launchDoc(word + ".html") or launchDoc(word + "_.html")
+  if not success:
+    print "Identifier", '"' + word + '"', "not found in the documentation."
 
-  word = vim.eval('expand("<cword>")')
-
-  if word:
-    if fun:
-      success = launchDoc(word + "_.html") or launchDoc(word + ".html")
-    else:
-      success = launchDoc(word + ".html") or launchDoc(word + "_.html")
-    if not success:
-      print "Identifier", '"' + word + '"', "not found in the documentation."
-
-  ENDPY
-endfunction
+ENDPY
+  endfunction
 
 nnoremap <silent> <buffer> K :call ProcessingDoc()<CR>
 
 endif "has("python")
 
 if has("macunix")
-
   let s:runner = expand('<sfile>:p:h').'/../bin/runPSketch.scpt'
 
   function! RunProcessing()
@@ -98,6 +96,5 @@ if has("macunix")
 
   map <F5> :call RunProcessing()<CR>
   command! RunProcessing call RunProcessing()
-
 endif "has("macunix")
 
