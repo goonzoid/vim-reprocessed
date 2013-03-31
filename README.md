@@ -29,3 +29,9 @@ Just clone it:
 
     cd ~/.vim/bundle
     git clone https://github.com/willpragnell/vim-reprocessed.git
+
+## TODO
+
+* Cleanup and update syntax file for Processing 2
+* Remove applescript and implement some platform agnostic equivalent
+
