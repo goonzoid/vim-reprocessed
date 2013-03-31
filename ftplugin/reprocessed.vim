@@ -80,7 +80,7 @@ if word:
   else:
     success = launchDoc(word + ".html") or launchDoc(word + "_.html")
   if not success:
-    print "Identifier", '"' + word + '"', "not found in the documentation."
+    print "Identifier", '"' + word + '"', "not found in local documentation."
 
 ENDPY
   endfunction
