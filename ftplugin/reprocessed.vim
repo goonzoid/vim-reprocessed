@@ -4,12 +4,6 @@ if (exists("b:did_ftplugin"))
 endif
 let b:did_ftplugin = 1
 
-" You may want to comment these
-setlocal expandtab
-setlocal shiftwidth=2
-setlocal tabstop=2
-setlocal fdm=syntax
-
 setlocal cindent
 setlocal cinkeys-=0#
 setlocal formatoptions-=t formatoptions+=croql
