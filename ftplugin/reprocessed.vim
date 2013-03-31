@@ -62,20 +62,20 @@ line = vim.current.line
 col = wordStart(line, col)
 if re.match(r"\w+\s*\(", line[col:]):
   if col < 4:
-    fun = True
+    isFunction = True
   else:
     col -= 4
     if re.match(r"new\s*\w+\s*\(", line[col:]):
-      fun = False
+      isFunction = False
     else:
-      fun = True
+      isFunction = True
 else:
-  fun = False
+  isFunction = False
 
 word = vim.eval('expand("<cword>")')
 
 if word:
-  if fun:
+  if isFunction:
     success = launchDoc(word + "_.html") or launchDoc(word + ".html")
   else:
     success = launchDoc(word + ".html") or launchDoc(word + "_.html")
