@@ -8,8 +8,26 @@ which was in turn an extension of vim script
 
 ## Features
 
+* Syntax highlighting
+* Documentation lookup
 * Run sketches from within vim (experimental and potentially dangerous,
 read below for more info)
+
+### Looking up documentation
+
+This feature requires that your vim has been compliled with python support.
+Simply move the cursor to the keyword you would like to look up and hit 'K' in
+normal mode. Note that words followed by an opening paren '(' are treated as
+functions, so `frameRate()` and `frameRate` will go to different pages in the
+documentation.
+
+By default, reprocessed will try to look up documentation online. However, you
+can configure it to access local documentation by adding the following line to
+your `.vimrc`:
+
+    let processing_doc_path="/path/to/processing/docs/on/your/machine"
+
+Of course, you'll want to replace the path with the actual path on your machine.
 
 ### Running sketches from within vim
 
