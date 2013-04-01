@@ -93,4 +93,5 @@ Just clone it:
 
 * Cleanup and update syntax file for Processing 2
 * Make processing-java run key command configurable
+* Allow processing-java output dir to be specified as an absolute path
 
