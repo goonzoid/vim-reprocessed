@@ -17,9 +17,8 @@ for this with `git diff --check` before committing).
 * The coding style should be consistent, follow the conventions you see in the
 source already. In particular, spaces should be used for indentation in all
 cases - no tabs please!
-* Commit messages should formatted sensibly and written in the present tense,
-e.g. `add CONTRIBUTING.md` not `added CONTRIBUTING.md`. (Yes, I know, I
-occasionaly break this rule myself... shh!)
+* Commit messages should formatted sensibly and written in the imperative,
+present tense, e.g. `add CONTRIBUTING.md` rather than `added CONTRIBUTING.md`.
 
 ## Contact
 
