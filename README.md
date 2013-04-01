@@ -37,9 +37,9 @@ to make a copy of that documentation elsewhere on the filesystem.
 
 ### Running sketches from within vim
 
-This feature requires the `processing-java` command to be available on your
+This feature requires the `processing-java` command to be available in your
 `PATH`. On Linux & Windows you'll need to add it manually, but on OS X you should
-be able to install this from within Processing.app. See the [processing wiki]
+be able to install this from within Processing.app. See the [Processing wiki]
 (http://wiki.processing.org/w/Command_Line) for more information.
 
 __WARNING:__ If you have a directory inside your sketch directory called "bin"
