@@ -48,7 +48,7 @@ If for some reason you need to specify the output directory for `processing-java
 to some path other than "bin", then you can do so with the following line in your
 .vimrc:
 
-    let processing_output_dir="output/"
+    let processing_output_dir="output_directory"
 
 The path you set is relative to the current sketch directory. Note that
 reprocessed will run `processing-java` with the `--force` option, and so this
@@ -60,10 +60,10 @@ in which it exists. If you created your sketch using the Processing app then
 this is unlikely to be an issue, but it's something to be aware of if you're
 creating new sketches in vim.
 
-You should be able to run your sketchs using `<leader>r`. This will save the file
-before running it. I highly recommend that you use version control to manage your
-sketches so that you don't lose any work. There are plans to make the key command
-used to run sketches configurable in the future.
+You should be able to run your sketchs using `<leader>r`. This command will save
+the file before running it. I highly recommend that you use version control to
+manage your sketches so that you don't lose any work. There are plans to make the
+key command used to run sketches configurable in the future.
 
 ## Installation
 
