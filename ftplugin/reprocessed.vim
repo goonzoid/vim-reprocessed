@@ -4,15 +4,15 @@ if (exists("b:did_ftplugin"))
 endif
 let b:did_ftplugin = 1
 
+" Various local settings
 setlocal cindent
 setlocal cinkeys-=0#
 setlocal formatoptions-=t formatoptions+=croql
 setlocal suffixesadd=.pde
 setlocal commentstring=//\ %s
+let b:undo_ftplugin = "setlocal cin< cink< fo< sua< cms<"
 
 nmap <buffer> <leader>r :w\|:!processing-java --sketch=%:p:h --output=%:p:h/bin --force --run<cr>
-
-let b:undo_ftplugin = "set cin< cink< fo< sua< et< sw< ts<"
 
 if has("python")
   if exists("g:processing_doc_path")
