@@ -7,6 +7,8 @@ which was in turn an extension of vim script
 [#2115](http://www.vim.org/scripts/script.php?script_id=2115).
 
 Please note that this plugin has currently only been tested on OS X.
+I would love to hear from you if you use this plugin (successfully or
+otherwise) on Windows or Linux.
 
 ## Features
 
@@ -43,10 +45,9 @@ be able to install this from within Processing.app. See the [processing wiki]
 __WARNING:__ If you have a directory inside your sketch directory called "bin"
 then it will be destroyed when you run your sketch using this method, unless you
 have explicitly configured reprocessed to use a different path using
-`processing_output_dir`.
-If for some reason you need to specify the output directory for `processing-java`
-to some path other than "bin", then you can do so with the following line in your
-.vimrc:
+`processing_output_dir`. If for some reason you need to specify the output
+directory for `processing-java` to some path other than "bin", then you can do
+so with the following line in your .vimrc:
 
     let processing_output_dir="output_directory"
 
