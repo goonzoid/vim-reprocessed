@@ -12,8 +12,7 @@ Please note that this plugin has currently only been tested on OS X.
 
 * Syntax highlighting
 * Documentation lookup
-* Run sketches from within vim (experimental and potentially dangerous,
-read below for more info)
+* Run sketches from within vim
 
 ### Looking up documentation
 
@@ -36,21 +35,26 @@ to make a copy of that documentation elsewhere on the filesystem.
 
 ### Running sketches from within vim
 
-__WARNING:__ If you have a directory inside your sketch directory called "bin"
-then it will be destroyed when you run your sketch using this method. This is
-because `processing-java` requires an output directory to be specified, which
-reprocessed specifies as "bin" in the same directory of your sketch.
-`processing-java` will stomp on this directory without warning because we're
-using the `--force` option, which is required to prevent you having to delete
-the directory manually after each run. I plan to make this path configurable
-at some point in the future, but until then, __you have been warned!__
-
 This feature requires the `processing-java` command to be available on your
 `PATH`. On Linux & Windows you'll need to add it manually, but on OS X you should
-be able to install this from within the Pocessing app. See the [processing wiki]
+be able to install this from within Processing.app. See the [processing wiki]
 (http://wiki.processing.org/w/Command_Line) for more information.
 
-Another requirement is that your directory structure follow the pattern that
+__WARNING:__ If you have a directory inside your sketch directory called "bin"
+then it will be destroyed when you run your sketch using this method, unless you
+have explicitly configured reprocessed to use a different path using
+`processing_output_dir`.
+If for some reason you need to specify the output directory for `processing-java`
+to some path other than "bin", then you can do so with the following line in your
+.vimrc:
+
+    let processing_output_dir="output/"
+
+The path you set is relative to the current sketch directory. Note that
+reprocessed will run `processing-java` with the `--force` option, and so this
+directory will get nuked every time you run your sketch. __You have been warned!__
+
+One other requirement is that your directory structure follow the pattern that
 Processing expects: your sketch file should have the same name as the directory
 in which it exists. If you created your sketch using the Processing app then
 this is unlikely to be an issue, but it's something to be aware of if you're
@@ -88,6 +92,5 @@ Just clone it:
 ## TODO
 
 * Cleanup and update syntax file for Processing 2
-* Make processing-java output path configurable
 * Make processing-java run key command configurable
 

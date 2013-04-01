@@ -12,8 +12,24 @@ setlocal suffixesadd=.pde
 setlocal commentstring=//\ %s
 let b:undo_ftplugin = "setlocal cin< cink< fo< sua< cms<"
 
-nmap <buffer> <leader>r :w\|:!processing-java --sketch=%:p:h --output=%:p:h/bin --force --run<cr>
+" Run sketches from within vim
+function! RunCurrentSketch()
+  let output_dir = "bin"
+  if exists("g:processing_output_dir")
+    let output_dir = g:processing_output_dir
+    let has_leading_slash = match(output_dir, "/") == 0
+    if has_leading_slash
+      let output_dir = substitute(output_dir, "/", "", "")
+    endif
+  endif
+  let cmd_string = ":!processing-java --sketch=%:p:h --output=%:p:h/{0} --force --run"
+  let cmd_string = substitute(cmd_string, "{0}", output_dir, "")
+  :w
+  exec cmd_string
+endfunction
+nnoremap <buffer> <leader>r :call RunCurrentSketch()<cr>
 
+" Documentation lookup
 if has("python")
   if exists("g:processing_doc_path")
     let g:processing_doc_style = "local"
