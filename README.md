@@ -43,17 +43,21 @@ be able to install this from within Processing.app. See the [Processing wiki]
 (http://wiki.processing.org/w/Command_Line) for more information.
 
 __WARNING:__ If you have a directory inside your sketch directory called "bin"
-then it will be destroyed when you run your sketch using this method, unless you
-have explicitly configured reprocessed to use a different path using
-`processing_output_dir`. If for some reason you need to specify the output
-directory for `processing-java` to some path other than "bin", then you can do
-so with the following line in your .vimrc:
+then it will be destroyed when you run your sketch using this method unless you
+have explicitly configured reprocessed to use a different path.
+If you want to specify the output directory for `processing-java` to some path
+other than "bin", then you can do so with one the following lines in your .vimrc:
 
-    let processing_output_dir="output_directory"
+    let processing_output_dir="path/relative/to/sketch"
 
-The path you set is relative to the current sketch directory. Note that
-reprocessed will run `processing-java` with the `--force` option, and so this
-directory will get nuked every time you run your sketch. __You have been warned!__
+    let processing_output_dir="/absolute/path"
+
+Paths without a leading `/` will be set relative to your sketch directory, in
+contrast to paths that start wtih a `/` which will be read as absolute paths.
+
+__WARNING:__ reprocessed will run `processing-java` with the `--force` option, so
+this directory will get nuked every time you run your sketch. Do not set this path
+to a directory which contains files you care about. __You have been warned!__
 
 One other requirement is that your directory structure follow the pattern that
 Processing expects: your sketch file should have the same name as the directory
@@ -95,5 +99,4 @@ Just clone it:
 
 * Cleanup and update syntax file for Processing 2
 * Make processing-java run key command configurable
-* Allow processing-java output dir to be specified as an absolute path
 

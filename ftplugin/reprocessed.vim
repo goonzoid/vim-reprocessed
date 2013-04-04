@@ -8,26 +8,21 @@ setlocal commentstring=//\ %s
 let b:undo_ftplugin = "setlocal sua< cms<"
 
 " Run sketches from within vim
-function! StripLeadingSlash(path)
-    let has_leading_slash = match(a:path, "/") == 0
-    if has_leading_slash
-      let strippedPath = substitute(a:path, "/", "", "")
-    else
-      let strippedPath = a:path
-    endif
-    return strippedPath
-endfunction
-
 function! ProcessingOutputDir()
-  let output_dir = "bin"
   if exists("g:processing_output_dir")
-    let output_dir = StripLeadingSlash(g:processing_output_dir)
+    let output_dir = g:processing_output_dir
+    let has_leading_slash = match(output_dir, "/") == 0
+    if !has_leading_slash
+      let output_dir = "%:p:h/".output_dir
+    endif
+  else
+    let output_dir = "%:p:h/bin"
   endif
   return output_dir
 endfunction
 
 function! SaveAndExecuteSketch(action)
-  let cmd_string_template = ":!processing-java --sketch=%:p:h --output=%:p:h/{0} --force --".a:action
+  let cmd_string_template = ":!processing-java --sketch=%:p:h --output={0} --force --".a:action
   let cmd_string = substitute(cmd_string_template, "{0}", ProcessingOutputDir(), "")
   :w
   exec cmd_string
