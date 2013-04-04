@@ -16,7 +16,31 @@ otherwise) on Windows or Linux.
 * Documentation lookup
 * Run sketches from within vim
 
-### Looking up documentation
+## Installation
+
+If you're not using either [Vundle](https://github.com/gmarik/vundle)
+or [Pathogen](https://github.com/tpope/vim-pathogen),
+I highly recommend that you check them out.
+
+### Install with Vundle
+
+Add this to your vimrc in the appropriate place:
+
+    Bundle "willpragnell/vim-reprocessed"
+
+Then install:
+
+    :so ~/.vimrc
+    :BundleInstall
+
+### Install with Pathogen
+
+Just clone it:
+
+    cd ~/.vim/bundle
+    git clone https://github.com/willpragnell/vim-reprocessed.git
+
+## Looking up documentation
 
 This feature requires that your vim has been compliled with python support.
 Simply move the cursor to the keyword you would like to look up and hit 'K' in
@@ -35,7 +59,7 @@ In some cases, I have seen this fail to work on OS X when attempting to link to
 the documentation withing the Processing.app application bundle. The solution is
 to make a copy of that documentation elsewhere on the filesystem.
 
-### Running sketches from within vim
+## Running sketches
 
 This feature requires the `processing-java` command to be available in your
 `PATH`. On Linux & Windows you'll need to add it manually, but on OS X you should
@@ -70,30 +94,6 @@ with `<leader>p`. These commands will save the file before running it. I highly
 recommend that you use version control to manage your sketches so that you don't
 lose any work. There are plans to make the key command used to run sketches
 configurable in the future.
-
-## Installation
-
-If you're not using either [Vundle](https://github.com/gmarik/vundle)
-or [Pathogen](https://github.com/tpope/vim-pathogen),
-I highly recommend that you check them out.
-
-### Install with Vundle
-
-Add this to your vimrc in the appropriate place:
-
-    Bundle "willpragnell/vim-reprocessed"
-
-Then install:
-
-    :so ~/.vimrc
-    :BundleInstall
-
-### Install with Pathogen
-
-Just clone it:
-
-    cd ~/.vim/bundle
-    git clone https://github.com/willpragnell/vim-reprocessed.git
 
 ## TODO
 
