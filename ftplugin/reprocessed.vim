@@ -8,21 +8,35 @@ setlocal commentstring=//\ %s
 let b:undo_ftplugin = "setlocal sua< cms<"
 
 " Run sketches from within vim
-function! RunCurrentSketch()
+function! StripLeadingSlash(path)
+    let has_leading_slash = match(a:path, "/") == 0
+    if has_leading_slash
+      let strippedPath = substitute(a:path, "/", "", "")
+    else
+      let strippedPath = a:path
+    endif
+    return strippedPath
+endfunction
+
+function! ProcessingOutputDir()
   let output_dir = "bin"
   if exists("g:processing_output_dir")
-    let output_dir = g:processing_output_dir
-    let has_leading_slash = match(output_dir, "/") == 0
-    if has_leading_slash
-      let output_dir = substitute(output_dir, "/", "", "")
-    endif
+    let output_dir = StripLeadingSlash(g:processing_output_dir)
   endif
-  let cmd_string = ":!processing-java --sketch=%:p:h --output=%:p:h/{0} --force --run"
-  let cmd_string = substitute(cmd_string, "{0}", output_dir, "")
+  return output_dir
+endfunction
+
+function! SaveAndExecuteSketch(action)
+  let cmd_string_template = ":!processing-java --sketch=%:p:h --output=%:p:h/{0} --force --".a:action
+  let cmd_string = substitute(cmd_string_template, "{0}", ProcessingOutputDir(), "")
   :w
   exec cmd_string
 endfunction
-nnoremap <buffer> <leader>r :call RunCurrentSketch()<cr>
+
+command! RunCurrentSketch call SaveAndExecuteSketch("run")
+command! PresentCurrentSketch call SaveAndExecuteSketch("present")
+nnoremap <buffer> <leader>r :RunCurrentSketch<cr>
+nnoremap <buffer> <leader>p :PresentCurrentSketch<cr>
 
 " Documentation lookup
 if has("python")

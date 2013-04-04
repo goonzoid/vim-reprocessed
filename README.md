@@ -61,10 +61,11 @@ in which it exists. If you created your sketch using the Processing app then
 this is unlikely to be an issue, but it's something to be aware of if you're
 creating new sketches in vim.
 
-You should be able to run your sketchs using `<leader>r`. This command will save
-the file before running it. I highly recommend that you use version control to
-manage your sketches so that you don't lose any work. There are plans to make the
-key command used to run sketches configurable in the future.
+You can run your sketchs normally by hitting `<leader>r`, or run them full screen
+with `<leader>p`. These commands will save the file before running it. I highly
+recommend that you use version control to manage your sketches so that you don't
+lose any work. There are plans to make the key command used to run sketches
+configurable in the future.
 
 ## Installation
 
