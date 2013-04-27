@@ -92,11 +92,28 @@ creating new sketches in vim.
 You can run your sketchs normally by hitting `<leader>r`, or run them full screen
 with `<leader>p`. These commands will save the file before running it. I highly
 recommend that you use version control to manage your sketches so that you don't
-lose any work. There are plans to make the key command used to run sketches
-configurable in the future.
+lose any work. If you wish to disable or reconfigure these keyboard mappings,
+please see the section below.
+
+## Key mappings
+
+By default, reprocessed will map `<leader>r` and `<leader>p` to run your sketch.
+If you wish to disable these mappings because they conflict with your own custom
+mappings, add the following line to your .vimrc:
+
+    let g:reprocessed_map_keys = 0
+
+If you wish to map some other keys to run sketches, the functions you need to
+map to are `:RunCurrentSketch` and `:PresentCurrentSketch`. So, for example, you
+may want something like the following:
+
+    nnoremap <leader>1 :RunCurrentSketch
+    nnoremap <leader>2 :PresentCurrentSketch
+
+Check out the vim help if you want to know about how mappings work or how to
+make these mappings only for `.pde` files.
 
 ## TODO
 
 * Cleanup and update syntax file for Processing 2
-* Make processing-java run key command configurable
 

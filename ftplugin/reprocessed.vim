@@ -29,10 +29,8 @@ function! SaveAndExecuteSketch(action)
   :redraw!
 endfunction
 
-command! RunCurrentSketch call SaveAndExecuteSketch("run")
-command! PresentCurrentSketch call SaveAndExecuteSketch("present")
-nnoremap <buffer> <leader>r :RunCurrentSketch<cr>
-nnoremap <buffer> <leader>p :PresentCurrentSketch<cr>
+command! RunCurrentSketch call SaveAndExecuteSketch("run")<cr>
+command! PresentCurrentSketch call SaveAndExecuteSketch("present")<cr>
 
 " Documentation lookup
 if has("python")
@@ -63,3 +61,12 @@ else
   echohl None
 endif
 
+" Key mappings
+if !exists('g:reprocessed_map_keys')
+  let g:reprocessed_map_keys = 1
+endif
+
+if g:reprocessed_map_keys
+  nnoremap <buffer> <leader>r :RunCurrentSketch
+  nnoremap <buffer> <leader>p :PresentCurrentSketch
+endif
