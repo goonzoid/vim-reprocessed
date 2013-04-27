@@ -107,8 +107,8 @@ If you wish to map some other keys to run sketches, the functions you need to
 map to are `:RunCurrentSketch` and `:PresentCurrentSketch`. So, for example, you
 may want something like the following:
 
-    nnoremap <leader>1 :RunCurrentSketch
-    nnoremap <leader>2 :PresentCurrentSketch
+    nnoremap <leader>1 :RunCurrentSketch<cr>
+    nnoremap <leader>2 :PresentCurrentSketch<cr>
 
 Check out the vim help if you want to know about how mappings work or how to
 make these mappings only for `.pde` files.

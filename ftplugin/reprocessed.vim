@@ -29,8 +29,8 @@ function! SaveAndExecuteSketch(action)
   :redraw!
 endfunction
 
-command! RunCurrentSketch call SaveAndExecuteSketch("run")<cr>
-command! PresentCurrentSketch call SaveAndExecuteSketch("present")<cr>
+command! RunCurrentSketch call SaveAndExecuteSketch("run")
+command! PresentCurrentSketch call SaveAndExecuteSketch("present")
 
 " Documentation lookup
 if has("python")
@@ -67,6 +67,6 @@ if !exists('g:reprocessed_map_keys')
 endif
 
 if g:reprocessed_map_keys
-  nnoremap <buffer> <leader>r :RunCurrentSketch
-  nnoremap <buffer> <leader>p :PresentCurrentSketch
+  nnoremap <buffer> <leader>r :RunCurrentSketch<cr>
+  nnoremap <buffer> <leader>p :PresentCurrentSketch<cr>
 endif
