@@ -22,10 +22,11 @@ function! ProcessingOutputDir()
 endfunction
 
 function! SaveAndExecuteSketch(action)
-  let cmd_string_template = ":!processing-java --sketch=%:p:h --output={0} --force --".a:action
+  let cmd_string_template = ":silent !processing-java --sketch=%:p:h --output={0} --force --".a:action
   let cmd_string = substitute(cmd_string_template, "{0}", ProcessingOutputDir(), "")
   :w
   exec cmd_string
+  :redraw!
 endfunction
 
 command! RunCurrentSketch call SaveAndExecuteSketch("run")
