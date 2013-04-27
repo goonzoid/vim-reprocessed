@@ -56,7 +56,7 @@ your .vimrc:
 
 Of course, you'll want to replace the path with the actual path on your machine.
 In some cases, I have seen this fail to work on OS X when attempting to link to
-the documentation withing the Processing.app application bundle. The solution is
+the documentation within the Processing.app application bundle. The solution is
 to make a copy of that documentation elsewhere on the filesystem.
 
 ## Running sketches
