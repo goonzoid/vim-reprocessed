@@ -116,4 +116,9 @@ make these mappings only for `.pde` files.
 ## TODO
 
 * Cleanup and update syntax file for Processing 2
+* Dash integration (possibly using
+  [dash.vim](https://github.com/rizzatti/dash.vim))
+* Support for running in javascript mode
+* Add license
+* Proper help/documentation
 
