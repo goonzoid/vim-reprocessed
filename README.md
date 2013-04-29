@@ -6,6 +6,9 @@ It is originally based on
 which was in turn an extension of vim script
 [#2115](http://www.vim.org/scripts/script.php?script_id=2115).
 
+This is my first foray into the world of vim scripting. If you spot anything
+that's bad practice, or have any feedback at all, I'd love to hear from you!
+
 Please note that this plugin has currently only been tested on OS X.
 I would love to hear from you if you use this plugin (successfully or
 otherwise) on Windows or Linux.
