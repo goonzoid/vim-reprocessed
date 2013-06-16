@@ -124,4 +124,5 @@ make these mappings only for `.pde` files.
 * Support for running in javascript mode
 * Add license
 * Proper help/documentation
+* Automatic bracket/curly-brace insertion?
 
