@@ -66,8 +66,8 @@ to make a copy of that documentation elsewhere on the filesystem.
 
 This feature requires the `processing-java` command to be available in your
 `PATH`. On Linux & Windows you'll need to add it manually, but on OS X you should
-be able to install this from within Processing.app. See the [Processing wiki]
-(http://wiki.processing.org/w/Command_Line) for more information.
+be able to install this from within Processing.app. See the
+[Processing wiki](http://wiki.processing.org/w/Command_Line) for more information.
 
 __WARNING:__ If you have a directory inside your sketch directory called "bin"
 then it will be destroyed when you run your sketch using this method unless you
